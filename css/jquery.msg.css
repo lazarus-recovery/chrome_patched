@@ -1,0 +1,100 @@
+
+
+/* messages */
+#jquery-msg-box {
+	position: fixed;
+	top: 150px;
+	left: 50%;
+	width: 450px;
+  margin-left: -225px;
+	padding: 3px;
+	font-size: 16px;
+	color: #339;
+	z-index: 99999;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 3px 3px 5px #999;
+  -moz-box-shadow: 3px 3px 5px #999;
+  background: #4B8CDC -moz-linear-gradient(top,  #86B1E7, #4B8CDC 23px);
+  background: #4B8CDC -webkit-gradient(linear, 0 0, 0 23, from(#86B1E7), to(#4B8CDC));
+}
+
+#jquery-msg-title {
+  margin: 0;
+  padding: 0 22px 0 10px;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: bold;
+  height: 22px;
+  line-height: 22px;
+  text-transform: capitalize;
+  float: none;
+  width: auto;
+}
+
+#jquery-msg-body {
+  min-height: 40px;
+  border-radius: 2px;
+  padding: 16px 10px 10px 52px;
+  background: #ffffff url('../images/info-32.png') no-repeat 10px 10px;
+}
+
+#jquery-msg-body li,
+#jquery-msg-body ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+#jquery-msg-box.jquery-msg-loading #jquery-msg-body {
+  background-image: url('../images/loading-32.gif');
+}
+
+
+#jquery-msg-box.jquery-msg-error {
+	color: #F00;
+  background: #BB0000 -moz-linear-gradient(top,  #ff8888,  #BB0000 23px);
+	background: #BB0000 -webkit-gradient(linear, 0 0, 0 23, from(#ff8888), to(#BB0000));
+}
+#jquery-msg-box.jquery-msg-error #jquery-msg-body {
+  background-color: #fff8f8;
+  background-image: url('../images/error-32.png');
+}
+
+#jquery-msg-box.jquery-msg-warning {
+	color: #935103;
+  background: #FFA229 -moz-linear-gradient(top,  #FFC06F,  #FFA229 23px);
+	background: #FFA229 -webkit-gradient(linear, 0 0, 0 23, from(#FFC06F), to(#FFA229));
+}
+#jquery-msg-box.jquery-msg-warning #jquery-msg-body {
+  background-color: #ffffff;
+  background-image: url('../images/warning-32.png');
+}
+
+#jquery-msg-box.jquery-msg-success {
+	color: #060;
+  background: #008800 -moz-linear-gradient(top,  #44ff44,  #008800 23px);
+	background: #008800 -webkit-gradient(linear, 0 0, 0 23, from(#44ff44), to(#008800));
+}
+#jquery-msg-box.jquery-msg-success #jquery-msg-body {
+  background-color: #f8fff8;
+  background-image: url('../images/success-32.png');
+}
+
+
+
+#jquery-msg-close {
+	position: absolute;
+	top: 0px;
+	right: 5px;
+	width: 48px;
+	height: 20px;
+	background: url('../images/close.png') no-repeat 0px 0px; 
+}
+#jquery-msg-close:hover {
+	background-position: 0px -20px;
+}
+#jquery-msg-close:active {
+	background-position: 0px -40px;
+}

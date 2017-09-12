@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Jasmine Test Runner</title>
+  <link rel="stylesheet" type="text/css" href="jasmine/lib/jasmine-1.0.0/jasmine.css">
+  <script type="text/javascript" src="jasmine/lib/jasmine-1.0.0/jasmine.js"></script>
+  <script type="text/javascript" src="jasmine/lib/jasmine-1.0.0/jasmine-html.js"></script>
+
+  <!-- include source files here... -->
+	<script type="text/javascript" src="js/lazarus.js"></script>
+	<script type="text/javascript" src="js/logger.js"></script>
+	<script type="text/javascript" src="js/fnv.js"></script>
+	<script type="text/javascript" src="js/event.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/db.js"></script>
+	<script type="text/javascript" src="js/rsa.js" ></script>
+  <script type="text/javascript" src="js/aes.js" ></script>
+  <script type="text/javascript" src="js/crypto.js" ></script>
+  <script type="text/javascript" src="js/worker2.js" ></script>
+	<script type="text/javascript" src="js/background.js"></script>
+	<script type="text/javascript" src="js/platform.js"></script>
+
+  <script type="text/javascript" src="unit-tests/init.js"></script>
+  <!-- include spec files here... -->
+  <!-- 
+  -->
+  <script type="text/javascript" src="unit-tests/prefs.spec.js"></script>
+  <script type="text/javascript" src="unit-tests/db.spec.js"></script>
+  <script type="text/javascript" src="unit-tests/utils.spec.js"></script>
+  <script type="text/javascript" src="unit-tests/worker.spec.js"></script>
+	<script type="text/javascript" src="unit-tests/background.spec.js"></script>
+  <script type="text/javascript" src="unit-tests/crypto.spec.js"></script>
+  <script type="text/javascript" src="unit-tests/worker.spec.js"></script>
+
+</head>
+<body>
+<script type="text/javascript">
+		
+  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+  jasmine.getEnv().execute();
+</script>
+
+</body>
+</html>

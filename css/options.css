@@ -1,0 +1,189 @@
+h1 .version-info {
+  font-size: 12px;
+  float: right;
+}
+
+.field {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.field label {
+  display: block;
+  float: left;
+  width: 150px;
+  height: 20px;
+  line-height: 20px;
+}
+.field input:not([type]), 
+.field input[type="text"], 
+.field input[type=password]{
+  display: block;
+  float: left;
+  width: 250px;
+  height: 20px;
+}
+.field textarea {
+  width: 250px;
+  height: 80px;
+}
+.field input[type=checkbox]{
+  width: auto;
+  float: left;
+}
+.field input[type=number]{
+  width: 50px;
+  text-align: right;
+}
+.field-checkbox label {
+  width: auto;
+}
+.buttons {
+  display: block;
+  text-align: right;
+}
+.buttons input {
+  min-width: 80px;
+}
+
+
+#container {
+  width: 700px;
+  margin: 0px auto;
+  position: relative;
+}
+
+#encryption-password-box {
+  width: 410px;
+}
+
+/* updates */
+#update-check {
+  min-height: 24px;
+  display: block;
+  float: left;
+  padding-right: 30px;
+  background: no-repeat top right;
+}
+#update-check.loading {
+  background-image: url('../images/loading.gif');
+}
+#update-check.success {
+  background-image: url('../images/success.png');
+}
+#update-check.error {
+  background-image: url('../images/warning.png');
+}
+#update-check.update {
+  background-image: url('../images/update.png');
+}
+a[href] {
+  color: #335EA8;
+  text-decoration: none;
+}
+a[href]:hover {
+  text-decoration: underline;
+}
+
+input[type=text].sync-key {
+  font-family: monospace;
+  font-size: 15px;
+  width: 280px;
+  text-align: center;
+}
+#syncing-database {
+  display: none;
+}
+
+#status {
+  float: left;
+  height: 26px;
+  line-height: 26px;
+  padding: 0px 25px;
+  border: 1px solid transparent;
+  color: #339;
+  border-color: #339;
+  background: #eef url('../images/info.png') no-repeat 4px 4px;
+  display: none;
+}
+
+
+#status.loading {
+  color: #339;
+  border-color: #339;
+  background-color: #eef;
+  background-image: url('../images/loading.gif');
+}
+
+#status.error {
+  color: #F00;
+  border-color: #F00;
+  background-color: #fee;
+  background-image: url('../images/warning.png');
+}
+
+.message {
+  padding: 10px 10px 10px 52px;
+  min-height: 32px;
+	font-size: 16px;
+	color: #339;
+	z-index: 99999;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #339;
+  background: #eef url('../images/info-32.png') no-repeat 10px 10px;
+  margin-bottom: 10px;
+}
+.warning {
+  color: #935103;
+  border-color: #935103;
+  background-color: #ffe;
+  background-image: url('../images/warning-32.png');
+}
+.error {
+  color: #D00;
+  border-color: #D00;
+  background-color: #fee;
+  background-image: url('../images/error-32.png');
+}
+.message.error a {
+  color: #800;
+}
+
+.message a {
+  color: #00f;
+  cursor: pointer;
+}
+.message a:hover {
+  text-decoration: underline;
+}
+.sync-login-warning {
+  display: none;
+}
+.sync-button {
+  padding-bottom: 10px;
+}
+.sync-button button {
+  min-width: 200px;
+}
+#options-saved-msg {
+  background: #efe url('../images/success.png') no-repeat 10px center;
+  padding: 10px 10px 10px 40px;
+  border: 1px solid #080;
+  color: #080;
+  font-weight: bold;
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  display: none;
+}
+
+#overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.6) url('../images/loading-horizontal.gif') no-repeat center center;
+  z-index: 99999;
+}

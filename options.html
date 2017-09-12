@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>{options.title}</title>
+  <link rel="stylesheet" type="text/css" href="css/chrome-native-look.css" />
+  <link rel="stylesheet" type="text/css" href="css/options.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery.msg.css" />
+  
+  <script type="text/javascript" src="js/jquery.1.4.3.js"></script>    
+  <script type="text/javascript" src="js/jquery.msg.js"></script>    
+      
+	<script type="text/javascript" src="js/lazarus.js"></script>
+	<script type="text/javascript" src="js/logger.js"></script>
+	<script type="text/javascript" src="js/locale.js"></script>
+	<script type="text/javascript" src="js/strings.js"></script>
+	<script type="text/javascript" src="js/aes.js"></script>
+	<script type="text/javascript" src="js/sync.js"></script>
+	<script type="text/javascript" src="js/event.js"></script>
+	<script type="text/javascript" src="js/gevent.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/preferences.js"></script>
+	<script type="text/javascript" src="js/options.js"></script>
+	<script type="text/javascript" src="js/md5.js"></script>
+	<script type="text/javascript" src="js/worker2.js"></script>
+	<script type="text/javascript" src="js/platform.js"></script>
+	<script type="text/javascript" src="js/options-init.js"></script>
+	
+</head>
+<body>
+  <div id="container">
+    <h1>{options.title}<span class="version-info">{options.versionInfo}</span></h1>
+    <ul class="tabs">
+      <li><a href="#general-tabpanel" class="active"><span>{options.general}</span></a></li>
+      <li><a href="#database-tabpanel"><span>{options.database}</span></a></li>
+      <li id="sync-tab" style="display: none"><a href="#sync-tabpanel"><span>{options.sync}</span></a></li>
+      <li><a href="#about-tabpanel"><span>{options.about}</span></a></li>
+      <li><a href="#debug-tabpanel"><span>{options.debug}</span></a></li>
+      <li id="developer-tab" style="display: none"><a href="#developer-tabpanel"><span>Dev</span></a></li>
+      <!--li><a href="#experimental-tab"><span>{options.experimental}</span></a></li-->
+    </ul>
+      
+    <div id="general-tabpanel" class="tab-panel">
+      
+      <div class="sync-login-warning message error" >{options.sync.loginWarning,html}</div>
+    
+      <div class="section">
+        
+        <h3>{options.password}</h3>
+        
+        <div class="item">  
+          <div class="field field-checkbox">
+            <input id="encryption-checkbox" type="checkbox"  />
+            <label for="encryption-checkbox">{options.password.title}</label>
+          </div>
+          
+          <div class="field">
+            <input id="encryption-password-change" type="button" value="{options.password.change}" />
+            <input id="encryption-password-reset" type="button" value="{options.password.reset}" />
+          </div>
+          
+          <div id="encryption-password-box" onenter="encryption-password-save" onescape="encryption-password-cancel">
+            <div id="encryption-password-old-field" class="field">
+              <label for="encryption-password-old">{options.password.current}</label>
+              <input id="encryption-password-old" type="password"  />
+            </div>
+            <div id="encryption-password-field" class="field">
+              <label for="encryption-password">{options.password.new}</label>
+              <input id="encryption-password" type="password" />
+            </div>
+            <div id="encryption-password-confirm-field" class="field">
+              <label for="encryption-password-confirm">{options.password.confirm}</label>
+              <input id="encryption-password-confirm" type="password"  />
+            </div>
+            <div class="buttons">
+              <input id="encryption-password-remove" type="button" value="{options.password.remove}" />
+              <input id="encryption-password-save" type="button" value="{options.password.save}" />
+              <input id="encryption-password-cancel" type="button" value="{generic.cancel}" />
+            </div>
+            <div class="info">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    
+      <div class="section">
+        
+        <h3>{options.whatToSave}</h3>
+        
+        <div class="item">               
+          <input id="save-passwords" type="checkbox" datatype="bool" preferenceid="savePasswords" />
+          <label for="save-passwords">{options.savePasswords}</label>
+          <p class="info"></p>
+        </div>
+        
+        
+        
+        <!--div class="item">               
+          <input type="checkbox" datatype="bool" preferenceid="saveCreditCards" />
+          <label>Save Credit Card Numbers</label>
+          <p class="info">Lazarus will not save any field that looks like a credit card number (13-16 digits and/or hyphens and spaces)</p>
+        </div-->
+      </div>
+      
+      <div class="section">
+        
+        <h3>{options.disabledDomains}</h3>
+        
+        <div class="item">    
+          <div class="field">
+            <textarea id="disabled-domains" ></textarea>
+            <p class="info"></p>
+          </div>
+        </div>
+        
+        <!--div class="item">               
+          <input type="checkbox" datatype="bool" preferenceid="saveCreditCards" />
+          <label>Save Credit Card Numbers</label>
+          <p class="info">Lazarus will not save any field that looks like a credit card number (13-16 digits and/or hyphens and spaces)</p>
+        </div-->
+      </div>
+      
+      <div class="section">
+        
+        <h3>{options.expireForms}</h3>
+        
+        <div class="item">    
+          <div class="field">
+            <input id="expire-forms-interval" datatype="int" preferenceid="expireFormsInterval" type="number" min="1" />
+            <select id="expire-forms-unit" datatype="int" preferenceid="expireFormsUnit">
+              <option value="60">{generic.minutes}</option>
+              <option value="3600">{generic.hours}</option>
+              <option value="86400">{generic.days}</option>
+            </select>
+          </div>
+        </div>
+        
+      </div>
+      
+      <div class="section">
+        
+        <h3>{options.updates}</h3>
+        
+        <div class="item">    
+          <div class="field">
+            <span id="update-check"></span>
+          </div>
+        </div>
+      </div>
+      
+    
+      
+      <!--div class="section">
+      
+        <h3>General Options</h3>
+        
+        <div class="item">               
+          <input id="lazarus-enable-checkbox" type="checkbox" datatype="bool" preferenceid="enabled" />
+          <label>Enable Lazarus</label>
+        </div>
+        
+        <div class="item">               
+          <input id="lazarus-show-icon" type="checkbox" datatype="bool" preferenceid="showIcon" />
+          <label>Show Icon</label>
+        </div>
+      </div-->
+      
+    </div>
+    
+    <div id="database-tabpanel" class="tab-panel">
+      <div class="section">
+        <h3>{options.database.title}</h3>
+        
+        <div class="item">               
+          <input id="database-rebuild" type="button" value="{options.rebuildDatabase}" />
+        </div>
+      </div>
+    </div>
+    
+    <div id="sync-tabpanel" class="tab-panel">
+		
+      <div class="message warning">{options.sync.info,html}</div>
+      
+      <div class="sync-login-warning message error" >{options.sync.loginWarning,html}</div>
+      
+			<!-- TODO: check localization of strings -->
+    
+      <div id="sync-enabled-box" class="section">
+        <h3>{options.sync}</h3>
+        
+        <div class="item">
+          <div id="sync-last-sync-time"></div>
+          <div id="syncing-database">{options.sync.syncing}</div>
+          <input id="sync-now" type="button" value="{options.sync.now}" /> 
+          <input id="sync-stop" type="button" value="{options.sync.stopSyncing}" />
+          <!--input id="sync-reset" type="button" value="Reset this account completely" /-->
+          
+        </div>
+      </div>
+    
+      
+      <div id="sync-setup-box" class="section">
+        <h3>{options.sync.setup}</h3>
+        
+        
+        <div class="item">
+          <p>{options.sync.instructions}</p>
+          
+          <div class="sync-button">
+            <button id="sync-show-login">{options.sync.loginToInterclue}</button>
+          </div>
+          
+          <div id="sync-login-box" onenter="sync-login">
+            
+            <div class="field">
+              <label for="sync-login-email">{options.sync.email}</label>
+              <input id="sync-login-email" type="text" preferenceid="syncEmail" datatype="string" />
+            </div>
+            
+            <div class="field">
+              <label for="sync-login-password">{options.sync.password}</label>
+              <input id="sync-login-password" type="password" />
+            </div>
+            
+            <div class="field">
+              <a href="#" id="sync-reset-password-link">{options.sync.resetPassword}</a>
+            </div>
+            
+            <div class="buttons">
+              <input id="sync-login" type="button" value="{options.sync.login}" />
+            </div>
+          </div>
+          
+          <div class="info">
+            <em>{generic.or}</em>
+          </div>
+            
+          <div class="sync-button">
+            <button id="sync-show-create-account">{options.sync.createAccount}</button>
+          </div>
+          
+          <div id="sync-create-account-box" onenter="sync-create-account">
+            <div class="field">
+              <label for="sync-create-email">{options.sync.email}</label>
+              <input id="sync-create-email" type="text" preferenceid="syncEmail" datatype="string" />
+            </div>
+            
+            <div class="field">
+              <label for="sync-create-password">{options.sync.enterPassword}</label>
+              <input id="sync-create-password" type="password" />
+            </div>
+            
+            <div class="field">
+              <label for="sync-create-confirm">{options.sync.confirmPassword}</label>
+              <input id="sync-create-confirm" type="password" />
+            </div>
+            
+            <div class="buttons">
+              <input id="sync-create-account" type="button" value="{options.sync.createAccountBtn}" />
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    
+    
+     
+     
+    <div id="developer-tabpanel" class="tab-panel">
+      
+      <h2>Debugging Stuff (don't touch)</h2>
+      
+      <div class="section">
+        <h3>Sync Server</h3>
+        
+        <div class="item"> 
+          <div class="field">
+            <select id="sync-server" type="text" preferenceid="syncServer" datatype="string" >
+              <option value="http://lazarus.interclue.com/sync">lazarus.interclue.com</option>
+              <option value="http://php5/lazarus/lazarus-3/sync">localhost</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section">      
+        <h3>{options.tests}</h3>
+        
+        <div class="item">       
+          <input id="unittests-run" type="button" value="{options.runUnitTests}" />
+          <input id="md5-test" type="button" value="Test MD5" />
+          <input id="worker-aes-test" type="button" value="Test Worker AES Encryption" />
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    
+    
+    
+    <div id="about-tabpanel" class="tab-panel">
+      
+      <div class="section">
+        <h3>{options.about}</h3>
+        
+        <div class="item">           
+          {options.about.html,html}
+        </div>
+      </div>
+      
+      <div class="section">
+        <h3>{options.contact}</h3>
+        
+        <div class="item">   
+          {options.contact.html,html}
+        </div>
+      </div>
+      
+    </div>
+    
+    
+    
+    
+    <div id="experimental-tabpanel" class="tab-panel">
+      
+      <p>Experimental! Use at your own risk!</p>
+      
+      <div class="section">
+        <h3>Tests</h3>
+      
+        
+
+      </div>
+    </div>
+
+      
+    <div id="debug-tabpanel" class="tab-panel">
+      
+      <div class="section">
+        
+        <h3>{options.debugMode}</h3>
+        
+        <div class="item">    
+          <div class="field">
+            <select datatype="int" preferenceid="debugMode">
+              <option value="1">{options.debugMode.1}</option>
+              <option value="2">{options.debugMode.2}</option>
+              <option value="3">{options.debugMode.3}</option>
+              <option value="4">{options.debugMode.4}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+    
+    
+    <div class="buttons">
+      <button id="reset">{options.reset}</button>
+      <button id="close">{generic.close}</button>
+    </div>
+    
+    <div id="options-saved-msg">{options.saved}</div>
+  </div>
+  
+  <div id="overlay"></div>
+</body>
+</html>
