@@ -9,3 +9,15 @@ Lazarus securely saves forms as you type, allowing you to safely recover your lo
 
 ## Status
 This is the Chrome version that will be updated and then converted to a Firefox version.
+
+
+# Installation
+In order to install this extenstion into chrome:
+
+- Clone or download this project into a folder. 
+- Move the 3.0.7.pem private key file outside the project folder.
+- Open Chrome -> More Tools -> Extensions
+- Click the "Load Unpacked" button.
+- Point to the folder and select the .pem file as the private key.
+- Enjoy using Lazarus again!
+
